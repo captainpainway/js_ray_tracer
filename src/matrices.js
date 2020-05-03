@@ -95,7 +95,15 @@ const identity = (m) => {
  * @returns {number}
  */
 const determinant = (m) => {
-    return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+    if (m.length === 2) {
+        return m[0][0] * m[1][1] - m[0][1] * m[1][0];
+    } else {
+        let determinant = 0;
+        for (let c = 0; c < m[0].length; c++) {
+            determinant += m[0][c] * cofactor(m, 0, c);
+        }
+        return determinant;
+    }
 };
 
 /**
@@ -142,6 +150,26 @@ const cofactor = (m, row, col) => {
     return (row + col) % 2 === 0 ? minor(m, row, col) : -minor(m, row, col);
 };
 
+/**
+ * Calculate the inverse of a matrix.
+ * @param {array} m
+ * @returns {*}
+ */
+const inverse = (m) => {
+    if (determinant(m) === 0) return false;
+    let m2 = new Array(m.length);
+    for (let i = 0; i < m2.length; i++) {
+        m2[i] = new Array(m.length);
+    }
+    for (let row = 0; row < m.length; row++) {
+        for (let col = 0; col < m.length; col++) {
+            let c = cofactor(m, row, col);
+            m2[col][row] = c / determinant(m);
+        }
+    }
+    return m2;
+};
+
 module.exports = {
     matrix,
     equality,
@@ -150,5 +178,6 @@ module.exports = {
     determinant,
     submatrix,
     minor,
-    cofactor
+    cofactor,
+    inverse
 };
