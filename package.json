@@ -4,7 +4,10 @@
   "main": "index.js",
   "license": "MIT",
   "scripts": {
-    "test": "jest"
+    "test": "jest",
+    "challenge1": "node ./challenges/projectile_test.js",
+    "challenge2": "node ./challenges/projectile_render.js",
+    "challenge3": "node ./challenges/matrix_experiments.js"
   },
   "devDependencies": {
     "jest": "^25.4.0"
