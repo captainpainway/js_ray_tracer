@@ -62,7 +62,7 @@ const multiply = (m1, m2) => {
     let b = m2;
 
     // Check to see if m2 is actually a tuple.
-    if (m2.x) {
+    if (m2.x !== undefined) {
         b = tuple_to_matrix(m2);
     }
 
@@ -76,7 +76,7 @@ const multiply = (m1, m2) => {
         }
     }
 
-    return m2.x ? matrix_to_tuple(arr) : matrix(arr);
+    return m2.x !== undefined ? matrix_to_tuple(arr) : matrix(arr);
 };
 
 /**
@@ -147,7 +147,7 @@ const minor = (m, row, col) => {
  */
 const cofactor = (m, row, col) => {
     // If row + col is odd, negate the value.
-    return (row + col) % 2 === 0 ? minor(m, row, col) : ~minor(m, row, col) + 1;
+    return (row + col) % 2 === 0 ? minor(m, row, col) : -minor(m, row, col);
 };
 
 /**

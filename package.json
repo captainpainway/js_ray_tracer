@@ -7,7 +7,8 @@
     "test": "jest",
     "challenge1": "node ./challenges/projectile_test.js",
     "challenge2": "node ./challenges/projectile_render.js",
-    "challenge3": "node ./challenges/matrix_experiments.js"
+    "challenge3": "node ./challenges/matrix_experiments.js",
+    "challenge4": "node ./challenges/clock_face.js"
   },
   "devDependencies": {
     "jest": "^25.4.0"
